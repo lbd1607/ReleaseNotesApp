@@ -1,16 +1,35 @@
 {
   "name": "ReleaseNotes",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development --watch ./releasenotes/frontend/src/index.js --output ./releasenotes/frontend/static/frontend/main.js", 
+    "build": "webpack --mode production ./releasenotes/frontend/src/index.js --output ./releasenotes/frontend/static/frontend/main.js" 
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
-  }
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lbd1607/releasenotesapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lbd1607/releasenotesapp/issues"
+  },
+  "homepage": "https://github.com/lbd1607/releasenotesapp#readme",
+  "description": ""
 }
