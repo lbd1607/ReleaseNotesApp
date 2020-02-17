@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+//Contains the form for adding release notes. Called in Dashboard.js
+
 export class Forms extends Component {
   render() {
     return (

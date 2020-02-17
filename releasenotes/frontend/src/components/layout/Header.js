@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+//Contains header elements for the page like the navbar and basic React components. Called in App.js
+
 export class Header extends Component {
   render() {
     return (
