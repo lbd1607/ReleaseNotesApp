@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { GET_NOTES } from "./types";
 
-//Actions to initiate
+//Actions to initiate (HTTP requests)
 
 // GET NOTES, dispatch action to reducer
 export const getNotes = () => dispatch => {

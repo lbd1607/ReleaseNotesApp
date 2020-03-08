@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import propTypes from "prop-types";
 import { getNotes } from "../../actions/notes";
 
 //Contains list of created release notes to be rendered on the page. Called in Dashboard.js
 
 export class Notes extends Component {
   //Add PropTypes for notes proptypes
-  static PropTypes = {
-    notes: PropTypes.array.isRequired
+  static propTypes = {
+    notes: propTypes.array.isRequired
   };
 
   //Call getNotes() action from props
@@ -22,12 +22,27 @@ export class Notes extends Component {
       <Fragment>
         <h2>Notes</h2>
         <table className="table table-striped">
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Note</th>
-            <th>Created At</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Note</th>
+              <th>Created At</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.notes.map(note => (
+              <tr key={note.title}>
+                <td>{note.title}</td>
+                <td>{note.author}</td>
+                <td>{note.note}</td>
+                <td>{note.created}</td>
+                <td>
+                  <button className="btn btn-danger btn-sm">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </Fragment>
     );
