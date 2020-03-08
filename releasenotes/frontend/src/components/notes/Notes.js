@@ -1,14 +1,16 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
-import { getNotes } from "../../actions/notes";
+import { getNotes, deleteNotes } from "../../actions/notes";
 
 //Contains list of created release notes to be rendered on the page. Called in Dashboard.js
 
 export class Notes extends Component {
-  //Add PropTypes for notes proptypes
+  //Add propTypes for notes proptypes
   static propTypes = {
-    notes: propTypes.array.isRequired
+    notes: propTypes.array.isRequired,
+    getNotes: propTypes.func.isRequired,
+    deleteNotes: propTypes.func.isRequired
   };
 
   //Call getNotes() action from props
@@ -31,14 +33,20 @@ export class Notes extends Component {
             </tr>
           </thead>
           <tbody>
+            {/* Pull in data from state mapped to props */}
             {this.props.notes.map(note => (
               <tr key={note.title}>
                 <td>{note.title}</td>
                 <td>{note.author}</td>
-                <td>{note.note}</td>
-                <td>{note.created}</td>
+                <td>{note.note_body}</td>
+                <td>{note.created_at}</td>
                 <td>
-                  <button className="btn btn-danger btn-sm">Delete</button>
+                  <button
+                    onClick={this.props.deleteNotes.bind(this, note.id)}
+                    className="btn btn-danger btn-sm"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
@@ -54,4 +62,4 @@ const mapStateToProps = state => ({
   notes: state.notes.notes
 });
 
-export default connect(mapStateToProps, { getNotes })(Notes);
+export default connect(mapStateToProps, { getNotes, deleteNotes })(Notes);
