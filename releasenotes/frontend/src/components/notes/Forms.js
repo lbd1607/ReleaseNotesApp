@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import { addNotes } from "../../actions/notes";
 
 //Contains the form for adding release notes. Called in Dashboard.js
@@ -13,7 +13,7 @@ export class Forms extends Component {
   };
 
   static propTypes = {
-    addNotes: propTypes.func.isRequired
+    addNotes: PropTypes.func.isRequired
   };
 
   //onChange and onSubmit functionality
@@ -24,6 +24,11 @@ export class Forms extends Component {
     const { title, author, note_body } = this.state;
     const note = { title, author, note_body };
     this.props.addNotes(note);
+    this.setState({
+      title: "",
+      author: "",
+      note_body: ""
+    });
   };
 
   //Form and fields
@@ -61,6 +66,7 @@ export class Forms extends Component {
               name="note_body"
               onChange={this.onChange}
               value={note_body}
+              //required
             />
           </div>
           <div className="form-group">

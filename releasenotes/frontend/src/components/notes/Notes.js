@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import { getNotes, deleteNotes } from "../../actions/notes";
 
 //Contains list of created release notes to be rendered on the page. Called in Dashboard.js
@@ -8,9 +8,9 @@ import { getNotes, deleteNotes } from "../../actions/notes";
 export class Notes extends Component {
   //Add propTypes for notes proptypes
   static propTypes = {
-    notes: propTypes.array.isRequired,
-    getNotes: propTypes.func.isRequired,
-    deleteNotes: propTypes.func.isRequired
+    notes: PropTypes.array.isRequired,
+    getNotes: PropTypes.func.isRequired,
+    deleteNotes: PropTypes.func.isRequired
   };
 
   //Call getNotes() action from props

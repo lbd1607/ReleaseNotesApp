@@ -1,8 +1,7 @@
 --Must Haves--
-* Configure error handling
 * Configure authentication
+* Create confirmation dialog for delete notes function
 
 --Additional Features--
-* Create confirmation dialog for delete notes function
 * Format auto added datetimes as MM/dd/yyyy hh:mm
 * Truncate note text into a preview and insert link to view all page
