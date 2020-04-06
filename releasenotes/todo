@@ -1,6 +1,7 @@
 --Must Haves--
 * Configure authentication
 * Create confirmation dialog for delete notes function
+* Insert checks and messages to ensure usernames are not case sensitive
 
 --Additional Features--
 * Format auto added datetimes as MM/dd/yyyy hh:mm
