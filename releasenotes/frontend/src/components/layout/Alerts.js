@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 export class Alerts extends Component {
   static propTypes = {
     error: PropTypes.object.isRequired,
-    message: PropTypes.object.isRequired
+    message: PropTypes.object.isRequired,
   };
   //When component updates, this alert will run
   componentDidUpdate(prevProps) {
@@ -17,6 +17,8 @@ export class Alerts extends Component {
       if (error.msg.author) alert.error(`Author: ${error.msg.author.join()}`);
       if (error.msg.note_body)
         alert.error(`Note: ${error.msg.note_body.join()}`);
+      if (error.msg.non_field_errors)
+        alert.error(error.msg.non_field_errors.join());
     }
 
     if (message !== prevProps.message) {
@@ -29,9 +31,9 @@ export class Alerts extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   error: state.errors,
-  message: state.messages
+  message: state.messages,
 });
 
 export default connect(mapStateToProps)(withAlert()(Alerts));

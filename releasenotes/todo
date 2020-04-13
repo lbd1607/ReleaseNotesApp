@@ -1,8 +1,12 @@
 --Must Haves--
-* Configure authentication
+* Fix 401 causing authenticated users to not add notes
+* Fix form visibility when refreshing as authenticated user
+* Ensure published notes are landing page instead of login
+* Create alert if user attempts to sign in with empty username/password
 * Create confirmation dialog for delete notes function
 * Insert checks and messages to ensure usernames are not case sensitive
 
 --Additional Features--
 * Format auto added datetimes as MM/dd/yyyy hh:mm
 * Truncate note text into a preview and insert link to view all page
+* Favicon

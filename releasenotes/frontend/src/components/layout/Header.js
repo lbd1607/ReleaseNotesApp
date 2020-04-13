@@ -1,10 +1,52 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logout } from "../../actions/auth";
 
 //Contains header elements for the page like the navbar and basic React components. Called in App.js
 
 export class Header extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired,
+  };
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+
+    const authLinks = (
+      //The links that are displayed in the nav if user is logged in
+      <ul className="navbar-nav mr-auto">
+        <span className="navbar-text mr-3">
+          <strong>{user ? `Welcome ${user.username}` : ""}</strong>
+        </span>
+        <span className="nav-item">
+          <button
+            onClick={this.props.logout}
+            className="nav-link btn btn-info btn-sm text-light"
+          >
+            Log out
+          </button>
+        </span>
+      </ul>
+    );
+
+    const guestLinks = (
+      //The links that are displayed in the nav if user is not logged in
+      <ul className="navbar-nav mr-auto">
+        <span className="nav-item">
+          <Link to="/register" className="nav-link">
+            Register
+          </Link>
+        </span>
+        <span className="nav-item">
+          <Link to="/login" className="nav-link">
+            Login
+          </Link>
+        </span>
+      </ul>
+    );
+
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
         <div className="container">
@@ -52,22 +94,15 @@ export class Header extends Component {
               </li>
             </ul>
           </div>
-          <ul className="navbar-nav mr-auto">
-            <span className="nav-item">
-              <Link to="/register" className="nav-link">
-                Register
-              </Link>
-            </span>
-            <span className="nav-item">
-              <Link to="/login" className="nav-link">
-                Login
-              </Link>
-            </span>
-          </ul>
+          {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
     );
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(Header);
