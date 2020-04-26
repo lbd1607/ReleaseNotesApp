@@ -5,6 +5,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
 } from "../actions/types";
 
 //Default state for authorization
@@ -33,6 +35,7 @@ export default function (state = initialState, action) {
         user: action.payload,
       };
     case LOGIN_SUCCESS:
+    case REGISTER_SUCCESS:
       //If user logs in successfully, set token, return state, action.payload, set isAuthenticated to true and isLoading to false
       localStorage.setItem("token", action.payload.token);
       return {
@@ -45,6 +48,7 @@ export default function (state = initialState, action) {
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT_SUCCESS:
+    case REGISTER_FAIL:
       //If auth error occurs, user login fails, or user is logged out, remove token, return state, and set all values to null or false
       localStorage.removeItem("token");
       return {

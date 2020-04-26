@@ -1,4 +1,5 @@
 from notes.models import Note
+
 from rest_framework import viewsets, permissions
 from .serializers import NoteSerializer
 
@@ -7,6 +8,7 @@ from .serializers import NoteSerializer
 
 class NoteViewSet(viewsets.ModelViewSet):
     permission_classes = [
+        # permissions.AllowAny
         permissions.IsAuthenticated
     ]
 

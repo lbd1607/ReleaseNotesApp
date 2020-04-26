@@ -19,11 +19,15 @@ export class Alerts extends Component {
         alert.error(`Note: ${error.msg.note_body.join()}`);
       if (error.msg.non_field_errors)
         alert.error(error.msg.non_field_errors.join());
+      if (error.msg.username) alert.error(error.msg.username.join());
+      if (error.msg.email) alert.error(error.msg.email.join());
+      if (error.msg.password) alert.error(error.msg.password.join());
     }
 
     if (message !== prevProps.message) {
       if (message.noteDeleted) alert.success(message.noteDeleted);
       if (message.noteAdded) alert.success(message.noteAdded);
+      if (message.passwordsNotMatch) alert.error(message.passwordsNotMatch);
     }
   }
   render() {

@@ -20,11 +20,12 @@ import PrivateRoute from "./common/PrivateRoute";
 import { Provider } from "react-redux";
 import store from "../store";
 import { loadUser } from "../actions/auth";
+import PublicNotes from "./notes/Publicnotes";
 
 //Alert options
 const alertOptions = {
   timeout: 3000,
-  position: "bottom center",
+  position: "middle",
 };
 
 //Responsible for rendering the app in the DOM from Header (layout > Header.js) and Dashboard (notes > Dashboard.js) components. Also imports Redux store from store.js and alerts. Manages route access from react-router-dom.
@@ -42,6 +43,7 @@ class App extends Component {
             <Fragment>
               <Header />
               <Alerts />
+              <PublicNotes />
               <div className="container">
                 <Switch>
                   <PrivateRoute exact path="/" component={Dashboard} />

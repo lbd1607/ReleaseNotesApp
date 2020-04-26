@@ -3,7 +3,6 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
-import reducers from "../../reducers";
 
 //Login fields
 export class Login extends Component {
@@ -31,6 +30,7 @@ export class Login extends Component {
     if (this.props.isAuthenticated) {
       return <Redirect to="/" />;
     }
+
     //Deconstruct fields
     const { username, password } = this.state;
 

@@ -1,12 +1,12 @@
 --Must Haves--
-* Fix 401 causing authenticated users to not add notes
+* Figure out how to display notes publicly, but none of the post/delete functionality
+* Fix registration; clicking Register does not call any function
 * Fix form visibility when refreshing as authenticated user
 * Ensure published notes are landing page instead of login
-* Create alert if user attempts to sign in with empty username/password
 * Create confirmation dialog for delete notes function
 * Insert checks and messages to ensure usernames are not case sensitive
 
---Additional Features--
+--Nice to haves--
 * Format auto added datetimes as MM/dd/yyyy hh:mm
 * Truncate note text into a preview and insert link to view all page
 * Favicon

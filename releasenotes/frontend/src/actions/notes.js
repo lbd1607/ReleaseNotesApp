@@ -1,14 +1,15 @@
 import axios from "axios";
 import { createMessage, returnErrors } from "./messages";
+import { tokenConfig } from "./auth";
 
 import { GET_NOTES, DELETE_NOTES, ADD_NOTES, GET_ERRORS } from "./types";
 
 //Actions to initiate (HTTP requests)
 
 // GET NOTES, dispatch action to reducer
-export const getNotes = () => (dispatch) => {
+export const getNotes = () => (dispatch, getState) => {
   axios
-    .get("/api/notes/")
+    .get("/api/notes/", tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: GET_NOTES,
@@ -21,9 +22,9 @@ export const getNotes = () => (dispatch) => {
 };
 
 // DELETE NOTES, dispatch action to reducer
-export const deleteNotes = (id) => (dispatch) => {
+export const deleteNotes = (id) => (dispatch, getState) => {
   axios
-    .delete(`/api/notes/${id}/`)
+    .delete(`/api/notes/${id}/`, tokenConfig(getState))
     .then((res) => {
       //Dispatch note deleted message when delete successful
       dispatch(createMessage({ noteDeleted: "Note deleted" }));
@@ -36,9 +37,9 @@ export const deleteNotes = (id) => (dispatch) => {
 };
 
 // ADD NOTES, dispatch action to reducer
-export const addNotes = (note) => (dispatch) => {
+export const addNotes = (note) => (dispatch, getState) => {
   axios
-    .post("/api/notes/", note)
+    .post("/api/notes/", note, tokenConfig(getState))
     .then((res) => {
       //Dispatch note added message when add successful
       dispatch(createMessage({ noteAdded: "Note added" }));
